@@ -24,38 +24,34 @@
     }
 
     .logo-wrapper {
-      display: grid;
-      place-items: center;
       position: relative;
       width: 300px;
       height: 300px;
-      cursor: pointer;
-      opacity: 0;
-      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    .logo-static,
+    .logo-rotating {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
     }
 
     .logo-static {
       width: 140px;
-      height: auto;
       z-index: 2;
     }
 
     .logo-rotating {
       width: 280px;
-      height: auto;
       z-index: 1;
       animation: rotateCounterClockwise 15s linear infinite;
     }
 
     @keyframes rotateCounterClockwise {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(-360deg); }
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(-360deg); }
     }
 
     max-width: 600px {
@@ -78,18 +74,18 @@
 
 <div class="centered-wrapper">
   <div class="logo-wrapper" onclick="goToHome()">
-    <img src="logo2.svg" class="logo-rotating" alt="Вращающийся логотип">
-    <img src="logo1.svg" class="logo-static" alt="Основной логотип">
+    <img src="logo2.svg" class="logo-rotating" alt="Вращающийся логотип" />
+    <img src="logo1.svg" class="logo-static" alt="Основной логотип" />
   </div>
 </div>
 
 <script>
   function goToHome() {
-    document.body.style.transition = "opacity 0.7s ease";
+    document.body.style.transition = "opacity 0.6s ease";
     document.body.style.opacity = 0;
     setTimeout(() => {
       window.location.href = "home.html";
-    }, 700);
+    }, 600);
   }
 </script>
 
