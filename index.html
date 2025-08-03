@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Chechen People’s Club</title>
+  <title>The Noble Wolf Society</title>
   <style>
     * { box-sizing: border-box; }
 
@@ -37,8 +37,8 @@
       transform: scale(0.95);
     }
 
-    .logo-wrapper.loaded {
-      animation: fadeInSmooth 0.7s ease-out forwards;
+    .logo-wrapper.visible {
+      animation: fadeInSmooth 0.8s ease-out forwards;
     }
 
     @keyframes fadeInSmooth {
@@ -56,7 +56,8 @@
 
     .logo-rotating {
       position: absolute;
-      top: 50%; left: 50%;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
       width: 340px;
       height: auto;
@@ -83,29 +84,13 @@
 
 <div class="centered-wrapper" id="wrapper">
   <div class="logo-wrapper" id="logoWrapper" onclick="goToHome()">
-    <img src="logo1.svg" class="logo-static" id="logo1" alt="Фиксированный логотип">
-    <img src="logo2.svg" class="logo-rotating" id="logo2" alt="Вращающийся логотип">
+    <img src="logo1.svg" class="logo-static" alt="Фиксированный логотип">
+    <img src="logo2.svg" class="logo-rotating" alt="Вращающийся логотип">
   </div>
 </div>
 
 <script>
-  const logo1 = document.getElementById("logo1");
-  const logo2 = document.getElementById("logo2");
-  const logoWrapper = document.getElementById("logoWrapper");
-
-  let loadedCount = 0;
-
-  function checkLogosLoaded() {
-    loadedCount++;
-    if (loadedCount === 2) {
-      logoWrapper.classList.add("loaded");
-    }
-  }
-
-  logo1.onload = checkLogosLoaded;
-  logo2.onload = checkLogosLoaded;
-
-  // Переход на home.html
+  // Плавный переход
   function goToHome() {
     const wrapper = document.getElementById("wrapper");
     wrapper.classList.add("fade-out");
@@ -113,6 +98,12 @@
       window.location.href = "home.html";
     }, 700);
   }
+
+  // Показ логотипа после полной загрузки страницы
+  window.addEventListener("load", () => {
+    const logoWrapper = document.getElementById("logoWrapper");
+    logoWrapper.classList.add("visible");
+  });
 </script>
 
 </body>
