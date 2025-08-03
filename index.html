@@ -8,102 +8,89 @@
     * { box-sizing: border-box; }
 
     html, body {
-      margin: 0; padding: 0; height: 100%;
+      margin: 0;
+      padding: 0;
+      height: 100%;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       background: #ffffff;
     }
 
     .centered-wrapper {
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      text-align: center;
       padding: 20px;
-      opacity: 1;
-      transition: opacity 0.7s ease;
-    }
-
-    .fade-out {
-      opacity: 0;
     }
 
     .logo-wrapper {
+      display: grid;
+      place-items: center;
       position: relative;
+      width: 300px;
+      height: 300px;
       cursor: pointer;
-      width: fit-content;
       opacity: 0;
-      transform: scale(0.95);
-    }
-
-    .logo-wrapper.visible {
-      animation: fadeInSmooth 0.8s ease-out forwards;
-    }
-
-    @keyframes fadeInSmooth {
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+      animation: fadeIn 0.6s ease-out forwards;
     }
 
     .logo-static {
-      width: 250px;
+      width: 140px;
       height: auto;
-      display: block;
+      z-index: 2;
     }
 
     .logo-rotating {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 340px;
+      width: 280px;
       height: auto;
-      pointer-events: none;
+      z-index: 1;
       animation: rotateCounterClockwise 15s linear infinite;
     }
 
     @keyframes rotateCounterClockwise {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(-360deg); }
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
 
     max-width: 600px {
-      .logo-static {
-        width: 180px;
+      .logo-wrapper {
+        width: 220px;
+        height: 220px;
       }
+
+      .logo-static {
+        width: 100px;
+      }
+
       .logo-rotating {
-        width: 210px;
+        width: 200px;
       }
     }
   </style>
 </head>
 <body>
 
-<div class="centered-wrapper" id="wrapper">
-  <div class="logo-wrapper" id="logoWrapper" onclick="goToHome()">
-    <img src="logo1.svg" class="logo-static" alt="Фиксированный логотип">
+<div class="centered-wrapper">
+  <div class="logo-wrapper" onclick="goToHome()">
     <img src="logo2.svg" class="logo-rotating" alt="Вращающийся логотип">
+    <img src="logo1.svg" class="logo-static" alt="Основной логотип">
   </div>
 </div>
 
 <script>
-  // Плавный переход
   function goToHome() {
-    const wrapper = document.getElementById("wrapper");
-    wrapper.classList.add("fade-out");
+    document.body.style.transition = "opacity 0.7s ease";
+    document.body.style.opacity = 0;
     setTimeout(() => {
       window.location.href = "home.html";
     }, 700);
   }
-
-  // Показ логотипа после полной загрузки страницы
-  window.addEventListener("load", () => {
-    const logoWrapper = document.getElementById("logoWrapper");
-    logoWrapper.classList.add("visible");
-  });
 </script>
 
 </body>
