@@ -3,127 +3,119 @@
 <head> 
 <meta charset="UTF-8" /> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-<title>The Noble Wolf Society</title> 
+<title>The Chechen People’s Club</title> 
 <style> 
-* { box-sizing: border-box; } 
+  * { box-sizing: border-box; } 
  
-html, body { 
-  margin: 0; padding: 0; height: 100%; 
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-  background: #ffffff; 
-} 
- 
-.centered-wrapper { 
-  display: flex; flex-direction: column; 
-  justify-content: center; align-items: center; 
-  height: 100vh; text-align: center; padding: 20px; 
-} 
- 
-.logo-wrapper { 
-  position: relative; 
-  cursor: pointer; 
-  width: fit-content; 
-  /* Чтобы оба логотипа занимали место и были видны одновременно */
-  min-width: 340px; /* учитывая ширину вращающегося логотипа */
-  min-height: 340px; /* для достаточной высоты, чтобы не прыгало */
-} 
- 
-.logo-static, .logo-rotating { 
-  display: none; /* скрываем до загрузки */
-  position: absolute; 
-  top: 50%; left: 50%; 
-  transform: translate(-50%, -50%); 
-  height: auto; 
-} 
- 
-.logo-static { 
-  width: 250px; 
-  position: relative; /* Чтобы логотип был на уровне */
-  display: block; /* будет отображён после загрузки */
-  transform: translate(-50%, -50%); /* для центрирования */
-} 
- 
-.logo-rotating { 
-  width: 340px; 
-  pointer-events: none; 
-  animation: rotateCounterClockwise 15s linear infinite; 
-  display: block; /* будет отображён после загрузки */
-} 
- 
-@keyframes rotateCounterClockwise { 
-  from { transform: translate(-50%, -50%) rotate(0deg); } 
-  to { transform: translate(-50%, -50%) rotate(-360deg); } 
-} 
- 
-/* Убираем адаптивные стили, чтобы размеры не менялись на мобилках */
-/* max-width: 600px { 
-  .form-popup { 
-    width: 90%; 
-    padding: 30px 25px; 
+  html, body { 
+    margin: 0; padding: 0; height: 100%; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+    background: #ffffff; 
   } 
+ 
+  .centered-wrapper { 
+    position: relative; /* для absolute внутри */
+    width: 340px; /* максимальная ширина по логотипу */
+    height: 340px; /* фиксированная высота для стабилизации */
+    margin: 0 auto; /* центр по горизонтали */
+    top: 50%; /* центр по вертикали */
+    transform: translateY(50%); /* исправим чуть ниже */
+  } 
+
+  /* Чтобы центрировать по вертикали и горизонтали: */
+  body, html {
+    height: 100%;
+  }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+ 
+  .logo-wrapper { 
+    position: relative; 
+    width: 100%; 
+    height: 100%; 
+    cursor: pointer; 
+  } 
+ 
+  .logo-static, .logo-rotating { 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    display: none; /* скрываем до загрузки */
+    height: auto; 
+  } 
+ 
   .logo-static { 
-    width: 180px; 
+    width: 250px; 
+    z-index: 2; 
   } 
+ 
   .logo-rotating { 
-    width: 210px; 
+    width: 340px; 
+    pointer-events: none; 
+    animation: rotateCounterClockwise 15s linear infinite; 
+    z-index: 1; 
   } 
-} */
+ 
+  @keyframes rotateCounterClockwise { 
+    from { transform: translate(-50%, -50%) rotate(0deg); } 
+    to { transform: translate(-50%, -50%) rotate(-360deg); } 
+  } 
+ 
+  /* Убираем адаптивные стили, чтобы размеры не менялись на мобилках */ 
 </style> 
 </head> 
 <body> 
  
-<div class="centered-wrapper"> 
-  <div class="logo-wrapper" id="logoWrapper"> 
-    <img src="logo1.svg" class="logo-static" alt="Фиксированный логотип" id="logoStatic"> 
-    <img src="logo2.svg" class="logo-rotating" alt="Вращающийся логотип" id="logoRotating"> 
+  <div class="centered-wrapper"> 
+    <div class="logo-wrapper" id="logoWrapper"> 
+      <img src="logo1.svg" class="logo-static" alt="Фиксированный логотип" id="logoStatic"> 
+      <img src="logo2.svg" class="logo-rotating" alt="Вращающийся логотип" id="logoRotating"> 
+    </div> 
   </div> 
-</div> 
  
 <script> 
-const logoStatic = document.getElementById('logoStatic'); 
-const logoRotating = document.getElementById('logoRotating'); 
-const logoWrapper = document.getElementById('logoWrapper'); 
-
-// Ждём загрузки обоих изображений 
-let staticLoaded = false; 
-let rotatingLoaded = false; 
-
-function checkAndShowLogos() { 
-  if(staticLoaded && rotatingLoaded) { 
-    // показываем оба логотипа одновременно
-    logoStatic.style.display = 'block'; 
-    logoRotating.style.display = 'block'; 
+  const logoStatic = document.getElementById('logoStatic'); 
+  const logoRotating = document.getElementById('logoRotating'); 
+  const logoWrapper = document.getElementById('logoWrapper'); 
+ 
+  let staticLoaded = false; 
+  let rotatingLoaded = false; 
+ 
+  function checkAndShowLogos() { 
+    if(staticLoaded && rotatingLoaded) { 
+      logoStatic.style.display = 'block'; 
+      logoRotating.style.display = 'block'; 
+    } 
   } 
-} 
-
-logoStatic.addEventListener('load', () => { 
-  staticLoaded = true; 
+ 
+  logoStatic.addEventListener('load', () => { 
+    staticLoaded = true; 
+    checkAndShowLogos(); 
+  }); 
+ 
+  logoRotating.addEventListener('load', () => { 
+    rotatingLoaded = true; 
+    checkAndShowLogos(); 
+  }); 
+ 
+  // Если изображения уже загружены из кэша 
+  if (logoStatic.complete) { 
+    staticLoaded = true; 
+  } 
+  if (logoRotating.complete) { 
+    rotatingLoaded = true; 
+  } 
   checkAndShowLogos(); 
-}); 
-
-logoRotating.addEventListener('load', () => { 
-  rotatingLoaded = true; 
-  checkAndShowLogos(); 
-}); 
-
-// Если изображения уже в кэше и событие load не сработало, проверяем вручную 
-if (logoStatic.complete) { 
-  staticLoaded = true; 
-} 
-if (logoRotating.complete) { 
-  rotatingLoaded = true; 
-} 
-checkAndShowLogos(); 
-
-// Переход по клику на logo1 (фиксированный логотип)
-logoStatic.addEventListener('click', () => { 
-  // Плавный переход с небольшой задержкой для ощущения плавности 
-  // Можно добавить эффект, например fadeout, но т.к. страница новая, достаточно setTimeout
-  setTimeout(() => { 
-    window.location.href = 'home.html'; 
-  }, 150); 
-}); 
-
+ 
+  logoStatic.addEventListener('click', () => { 
+    setTimeout(() => { 
+      window.location.href = 'home.html'; 
+    }, 150); 
+  }); 
 </script> 
  
 </body> 
