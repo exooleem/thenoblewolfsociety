@@ -21,6 +21,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: opacity 0.8s ease;
+      opacity: 1;
     }
 
     .logo-wrapper {
@@ -70,11 +72,11 @@
     const logoStatic = document.getElementById('logoStatic');
     const logoRotating = document.getElementById('logoRotating');
     const logoWrapper = document.getElementById('logoWrapper');
+    const body = document.body;
 
     let staticLoaded = false;
     let rotatingLoaded = false;
 
-    // Показываем логотипы только когда оба загрузились
     function tryShowLogos() {
       if (staticLoaded && rotatingLoaded) {
         logoStatic.style.display = 'block';
@@ -101,9 +103,13 @@
     });
 
     logoWrapper.addEventListener('click', () => {
+      // Плавно скрываем body
+      body.style.opacity = '0';
+
+      // Ждём окончания анимации перед переходом
       setTimeout(() => {
         window.location.href = 'home.html';
-      }, 150);
+      }, 800); // Задержка должна совпадать с transition: 0.8s
     });
   </script>
 
