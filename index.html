@@ -25,7 +25,7 @@
 
     .logo-wrapper {
       position: relative;
-      width: 340px; /* Ширина под вращающийся логотип */
+      width: 340px;
       height: 340px;
       cursor: pointer;
     }
@@ -40,7 +40,7 @@
     }
 
     .logo-static {
-      width: 250px; /* Размер ты подогнал сам — можно менять */
+      width: 250px;
     }
 
     .logo-rotating {
@@ -74,26 +74,31 @@
     let staticLoaded = false;
     let rotatingLoaded = false;
 
-    function checkAndShowLogos() {
+    // Показываем логотипы только когда оба загрузились
+    function tryShowLogos() {
       if (staticLoaded && rotatingLoaded) {
         logoStatic.style.display = 'block';
         logoRotating.style.display = 'block';
       }
     }
 
-    logoStatic.addEventListener('load', () => {
+    function checkImageLoaded(img, onLoadCallback) {
+      if (img.complete) {
+        onLoadCallback();
+      } else {
+        img.addEventListener('load', onLoadCallback);
+      }
+    }
+
+    checkImageLoaded(logoStatic, () => {
       staticLoaded = true;
-      checkAndShowLogos();
+      tryShowLogos();
     });
 
-    logoRotating.addEventListener('load', () => {
+    checkImageLoaded(logoRotating, () => {
       rotatingLoaded = true;
-      checkAndShowLogos();
+      tryShowLogos();
     });
-
-    if (logoStatic.complete) staticLoaded = true;
-    if (logoRotating.complete) rotatingLoaded = true;
-    checkAndShowLogos();
 
     logoWrapper.addEventListener('click', () => {
       setTimeout(() => {
