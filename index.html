@@ -33,6 +33,19 @@
       position: relative;
       cursor: pointer;
       width: fit-content;
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
+    .logo-wrapper.loaded {
+      animation: fadeInSmooth 0.7s ease-out forwards;
+    }
+
+    @keyframes fadeInSmooth {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .logo-static {
@@ -69,19 +82,36 @@
 <body>
 
 <div class="centered-wrapper" id="wrapper">
-  <div class="logo-wrapper" onclick="goToHome()">
-    <img src="logo1.svg" class="logo-static" alt="Фиксированный логотип">
-    <img src="logo2.svg" class="logo-rotating" alt="Вращающийся логотип">
+  <div class="logo-wrapper" id="logoWrapper" onclick="goToHome()">
+    <img src="logo1.svg" class="logo-static" id="logo1" alt="Фиксированный логотип">
+    <img src="logo2.svg" class="logo-rotating" id="logo2" alt="Вращающийся логотип">
   </div>
 </div>
 
 <script>
+  const logo1 = document.getElementById("logo1");
+  const logo2 = document.getElementById("logo2");
+  const logoWrapper = document.getElementById("logoWrapper");
+
+  let loadedCount = 0;
+
+  function checkLogosLoaded() {
+    loadedCount++;
+    if (loadedCount === 2) {
+      logoWrapper.classList.add("loaded");
+    }
+  }
+
+  logo1.onload = checkLogosLoaded;
+  logo2.onload = checkLogosLoaded;
+
+  // Переход на home.html
   function goToHome() {
     const wrapper = document.getElementById("wrapper");
     wrapper.classList.add("fade-out");
     setTimeout(() => {
       window.location.href = "home.html";
-    }, 700); // 700 мс — соответствует transition в CSS
+    }, 700);
   }
 </script>
 
