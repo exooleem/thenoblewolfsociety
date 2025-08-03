@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Chechen People’s Club</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0; padding: 0; height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #ffffff;
+    }
+
+    .centered-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+      opacity: 1;
+      transition: opacity 0.7s ease;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+
+    .logo-wrapper {
+      position: relative;
+      cursor: pointer;
+      width: fit-content;
+    }
+
+    .logo-static {
+      width: 250px;
+      height: auto;
+      display: block;
+    }
+
+    .logo-rotating {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 340px;
+      height: auto;
+      pointer-events: none;
+      animation: rotateCounterClockwise 15s linear infinite;
+    }
+
+    @keyframes rotateCounterClockwise {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(-360deg); }
+    }
+
+    max-width: 600px {
+      .logo-static {
+        width: 180px;
+      }
+      .logo-rotating {
+        width: 210px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="centered-wrapper" id="wrapper">
+  <div class="logo-wrapper" onclick="goToHome()">
+    <img src="logo1.svg" class="logo-static" alt="Фиксированный логотип">
+    <img src="logo2.svg" class="logo-rotating" alt="Вращающийся логотип">
+  </div>
+</div>
+
+<script>
+  function goToHome() {
+    const wrapper = document.getElementById("wrapper");
+    wrapper.classList.add("fade-out");
+    setTimeout(() => {
+      window.location.href = "home.html";
+    }, 700); // 700 мс — соответствует transition в CSS
+  }
+</script>
+
+</body>
+</html>
