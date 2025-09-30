@@ -11,7 +11,7 @@ html, body { height: 100%; margin: 0; padding: 0; }
 
 /* Фон и шрифт */
 html, body {
-background: linear-gradient(180deg, #0A5F38 0%, #063E26 100%);
+background-color: #0A5F38; /* сплошной цвет */
 color: #fff;
 font-family: "Roboto", "Helvetica", Arial, sans-serif;
 }
@@ -32,15 +32,15 @@ margin-bottom: 32px;
 .top-text {
 font-size: 13px;
 text-transform: uppercase;
-letter-spacing: 3px;
+letter-spacing: 4px; /* чуть больше */
 opacity: 0.9;
 margin-bottom: 6px;
 }
 .restaurant-name {
 font-family: "Playfair Display", serif;
-font-size: 44px;
+font-size: 38px; /* чуть меньше */
 line-height: 1;
-letter-spacing: 6px;
+letter-spacing: 7px; /* немного увеличено */
 margin-bottom: 16px;
 color: #C8A951; /* золотой акцент */
 }
@@ -59,7 +59,8 @@ border-radius: 30px;
 border: 1px solid rgba(255,255,255,0.12);
 background: rgba(255,255,255,0.04);
 color: #fff;
-font-size: 16px;
+font-size: 15px; /* чуть меньше */
+letter-spacing: 0.5px;
 outline: none;
 }
 .search-bar::placeholder { color: rgba(255,255,255,0.6); }
@@ -83,9 +84,10 @@ display: none;
 .section { padding: 26px 0; text-align: center; }
 .section-title {
 font-family: "Playfair Display", serif;
-font-size: 32px;
-margin-bottom: 20px;
+font-size: 28px; /* уменьшили */
+margin-bottom: 18px;
 font-weight: 600;
+letter-spacing: 2px; /* немного разделили буквы */
 }
 
 /* Сетка карточек — 2 в ряд на всех экранах */
@@ -101,7 +103,7 @@ width: 100%;
 .menu-item {
 width: 100%;
 max-width: 400px;
-background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+background: rgba(255,255,255,0.03);
 border: 1px solid rgba(200,169,81,0.12);
 border-radius: 16px;
 overflow: hidden;
@@ -130,15 +132,16 @@ text-align: left;
 .info h3 {
 margin: 0;
 font-family: "Playfair Display", serif;
-font-size: 20px;
+font-size: 18px; /* уменьшили */
+letter-spacing: 1px; /* немного увеличили */
 color: #fff;
 }
 .info p {
 margin: 0;
-font-size: 14px;
+font-size: 13px; /* уменьшили */
+letter-spacing: 0.5px; /* слегка разделили буквы */
 color: rgba(255,255,255,0.85);
 line-height: 1.4;
-flex: 1;
 }
 .price-row {
 display: flex;
@@ -146,14 +149,20 @@ justify-content: space-between;
 align-items: center;
 margin-top: 8px;
 }
-.price { color: #C8A951; font-weight: 600; font-size: 17px; }
+.price {
+font-size: 16px;
+letter-spacing: 1px;
+color: #C8A951;
+font-weight: 600;
+}
 
 /* Адаптивность мелких экранов */
 max-width: 380px {
 .restaurant-name { font-size: 28px; }
 .section-title { font-size: 22px; }
 .menu-item img { height: 140px; }
-.info h3 { font-size: 18px; }
+.info h3 { font-size: 16px; }
+.info p { font-size: 12px; }
 }
 </style>
 </head>
