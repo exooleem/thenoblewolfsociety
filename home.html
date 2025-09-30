@@ -1,120 +1,159 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Noble Wolf Society</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-    }
-
-    body {
-      background: #fff;
-      color: #111;
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: 0 auto;
-      opacity: 0;
-      animation: fadeIn 1.5s ease forwards;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    header h1 {
-      font-size: 24px;
-      letter-spacing: 0px;
-      font-family: 'Cormorant', serif;
-    }
-
-    header p {
-      margin-top: 10px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
-    }
-
-    .product {
-      border: none;
-      border-radius: 8px;
-      padding: 20px;
-      text-align: center;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .product:hover {
-      box-shadow: none;
-    }
-
-    .product img {
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 15px;
-    }
-
-    .product h2 {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .product p {
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
-
-    .product button {
-      background: #610000;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    footer {
-      margin-top: 60px;
-      text-align: center;
-      font-size: 14px;
-      color: #999;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Меню ресторана</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+background: #f8f8f8;
+color: #333;
+}
+header {
+background: #fff;
+padding: 20px;
+text-align: center;
+border-bottom: 1px solid #ddd;
+position: sticky;
+top: 0;
+z-index: 10;
+}
+header h1 {
+margin: 0;
+font-size: 28px;
+}
+header input {
+margin-top: 10px;
+padding: 10px;
+width: 60%;
+max-width: 400px;
+border: 1px solid #ccc;
+border-radius: 5px;
+}
+.section {
+padding: 30px 20px;
+}
+.section h2 {
+font-size: 22px;
+margin-bottom: 20px;
+border-bottom: 2px solid #ccc;
+display: inline-block;
+padding-bottom: 5px;
+}
+.menu-items {
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+}
+.menu-item {
+background: #fff;
+border-radius: 10px;
+box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+width: 250px;
+overflow: hidden;
+transition: transform 0.2s;
+}
+.menu-item:hover {
+transform: translateY(-5px);
+}
+.menu-item img {
+width: 100%;
+height: 160px;
+object-fit: cover;
+}
+.menu-item .info {
+padding: 15px;
+}
+.menu-item h3 {
+margin: 0 0 10px;
+font-size: 18px;
+}
+.menu-item p {
+margin: 0 0 10px;
+font-size: 14px;
+color: #666;
+}
+.menu-item .price {
+font-weight: bold;
+color: #000;
+}
+</style>
 </head>
 <body>
 
 <header>
-  <h1>The Noble Wolf Society</h1>
-  <p>Limited Edition</p>
+<h1>🍽 Ресторан "ХУРМА"</h1>
+<input type="text" id="search" placeholder="Поиск по меню...">
 </header>
 
-<section class="products">
-  <div class="product">
-    <img src="images/tshirt.jpg" alt="Product 1">
-    <h2>T-shirt "1 out of 100"</h2>
-    <p>100% cotton</p>
-    <button>Buy</button>
-  </div>
-</section>
+<!— Раздел: Супы —>
+<div class="section">
+<h2>🥣 Супы</h2>
+<div class="menu-items">
+<!— Карточка блюда —>
+<div class="menu-item" data-name="борщ" data-desc="свекла капуста мясо сметана">
+<img src="via.placeholder.com/250x160" alt="Борщ">
+<div class="info">
+<h3>Борщ</h3>
+<p>Свекла, капуста, мясо, сметана</p>
+<div class="price">250 ₽</div>
+</div>
+</div>
+<!— Новое блюдо добавляется копированием этого блока —>
+<div class="menu-item" data-name="суп-пюре грибной" data-desc="шампиньоны сливки зелень">
+<img src="via.placeholder.com/250x160" alt="Суп-пюре">
+<div class="info">
+<h3>Суп-пюре грибной</h3>
+<p>Шампиньоны, сливки, зелень</p>
+<div class="price">300 ₽</div>
+</div>
+</div>
+</div>
+</div>
 
-<footer>
-  © 2025 The Noble Wolf Society
-</footer>
+<!— Раздел: Салаты —>
+<div class="section">
+<h2>🥗 Салаты</h2>
+<div class="menu-items">
+<div class="menu-item" data-name="цезарь" data-desc="курица салат романо пармезан соус">
+<img src="via.placeholder.com/250x160" alt="Цезарь">
+<div class="info">
+<h3>Цезарь с курицей</h3>
+<p>Курица, салат романо, пармезан, соус</p>
+<div class="price">420 ₽</div>
+</div>
+</div>
+<div class="menu-item" data-name="греческий" data-desc="огурцы помидоры маслины сыр фета">
+<img src="via.placeholder.com/250x160" alt="Греческий">
+<div class="info">
+<h3>Греческий салат</h3>
+<p>Огурцы, помидоры, маслины, сыр фета</p>
+<div class="price">350 ₽</div>
+</div>
+</div>
+</div>
+</div>
+
+<!— Разделы Горячее, Десерты можно добавлять таким же образом —>
+
+<script>
+// Поиск по меню
+const searchInput = document.getElementById('search');
+searchInput.addEventListener('input', function() {
+let filter = this.value.toLowerCase();
+let items = document.querySelectorAll('.menu-item');
+items.forEach(item => {
+let name = item.getAttribute('data-name');
+let desc = item.getAttribute('data-desc');
+if (name.includes(filter) || desc.includes(filter)) {
+item.style.display = 'block';
+} else {
+item.style.display = 'none';
+}
+});
+});
+</script>
 
 </body>
 </html>
