@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ресторан Хурма</title>
+<title>Меню — ХУРМА</title>
 <link href="fonts.googleapis.com/css2?famil..." rel="stylesheet">
 <style>
 /* Базовая сброска */
@@ -81,16 +81,16 @@ display: none;
 /* Секции */
 .section { padding: 26px 0; text-align: center; }
 .section-title {
-font-size: 28px;
+font-size: 24px; /* уменьшенный размер */
 margin-bottom: 18px;
 font-weight: 600;
 letter-spacing: 2px;
 }
 
-/* Сетка карточек — 3 в ряд на десктопе */
+/* Сетка карточек — 2 в ряд на всех устройствах */
 .menu-items {
 display: grid;
-grid-template-columns: repeat(3, 1fr);
+grid-template-columns: repeat(2, 1fr); /* 2 карточки в ряд */
 gap: 20px;
 justify-items: center;
 width: 100%;
@@ -152,19 +152,11 @@ color: #C8A951;
 font-weight: 600;
 }
 
-/* Адаптивность */
-max-width: 768px {
-.menu-items {
-grid-template-columns: repeat(2, 1fr);
-}
-}
+/* На мобильных сохраняем 2 карточки в ряд */
 max-width: 480px {
-.menu-items {
-grid-template-columns: 1fr;
-}
-.restaurant-name { font-size: 28px; }
-.section-title { font-size: 22px; }
 .menu-item img { height: 140px; }
+.restaurant-name { font-size: 28px; }
+.section-title { font-size: 20px; }
 .info h3 { font-size: 16px; }
 .info p { font-size: 12px; }
 }
@@ -185,8 +177,8 @@ grid-template-columns: 1fr;
 <section class="section">
 <div class="section-title">САЛАТЫ</div>
 <div class="menu-items">
-<article class="menu-item" data-name="греческий" data-desc="помидоры огурцы маслины сыр фета оливковое масло">
-<img src="salat.jpg" alt="Греческий салат">
+<article class="menu-item" data-name="греческий салат" data-desc="помидоры огурцы маслины сыр фета оливковое масло">
+<img src="" alt="">
 <div class="info">
 <h3>Греческий салат</h3>
 <p>Помидоры, огурцы, маслины, сыр фета, оливковое масло</p>
@@ -194,14 +186,13 @@ grid-template-columns: 1fr;
 </div>
 </article>
 <article class="menu-item" data-name="цезарь" data-desc="курица салат романо пармезан соус сухарики">
-<img src="caesar.jpg" alt="Цезарь с курицей">
+<img src="" alt="">
 <div class="info">
-<h3>Цезарь с курицей</h3>
+<h3>Цезарь</h3>
 <p>Курица, салат романо, пармезан, соус цезарь, сухарики</p>
 <div class="price-row"><div></div><div class="price">420 ₽</div></div>
 </div>
 </article>
-<!— Добавляй третью карточку сюда —>
 </div>
 </section>
 
@@ -210,7 +201,7 @@ grid-template-columns: 1fr;
 <div class="section-title">СУПЫ</div>
 <div class="menu-items">
 <article class="menu-item" data-name="борщ" data-desc="свекла капуста мясо сметана">
-<img src="borsh.jpg" alt="Борщ">
+<img src="" alt="">
 <div class="info">
 <h3>Борщ</h3>
 <p>Свекла, капуста, мясо, сметана</p>
@@ -218,14 +209,13 @@ grid-template-columns: 1fr;
 </div>
 </article>
 <article class="menu-item" data-name="суп-пюре грибной" data-desc="шампиньоны сливки зелень">
-<img src="mushroom_soup.jpg" alt="Суп-пюре грибной">
+<img src="" alt="">
 <div class="info">
 <h3>Суп-пюре грибной</h3>
 <p>Шампиньоны, сливки, зелень</p>
 <div class="price-row"><div></div><div class="price">300 ₽</div></div>
 </div>
 </article>
-<!— Добавляй третью карточку сюда —>
 </div>
 </section>
 </div>
@@ -272,7 +262,21 @@ resetFilter();
 searchInput.focus();
 });
 
-document.addEventListener('DOMContentLoaded', () => applyFilter(''));
+// Автоматическая подстановка фото по названию блюда
+document.addEventListener('DOMContentLoaded', () => {
+document.querySelectorAll('.menu-item').forEach(item => {
+const name = item.getAttribute('data-name');
+if (name) {
+// Формируем имя файла: пробелы → _, маленькие буквы, .jpg
+const fileName = name.toLowerCase().replace(/\s+/g, '_') + '.jpg';
+const img = item.querySelector('img');
+if (img) {
+img.src = fileName;
+img.alt = name;
+}
+}
+});
+});
 </script>
 </body>
 </html>
