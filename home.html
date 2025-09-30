@@ -37,12 +37,16 @@ letter-spacing: 4px;
 opacity: 0.9;
 margin-bottom: 6px;
 }
+/* Растянутая надпись ХУРМА */
 .restaurant-name {
 font-size: 38px;
 line-height: 1;
-letter-spacing: 7px;
-margin-bottom: 16px;
 color: #C8A951;
+text-align: center;
+width: 100%;
+display: block;
+letter-spacing: 28px; /* подбираем растяжку */
+text-transform: uppercase;
 }
 
 /* Поиск с крестиком */
@@ -81,18 +85,20 @@ display: none;
 /* Секции */
 .section { padding: 26px 0; text-align: center; }
 .section-title {
-font-size: 24px; /* уменьшенный размер */
+font-size: 24px;
 margin-bottom: 18px;
 font-weight: 600;
-letter-spacing: 2px;
+letter-spacing: 4px;
+text-transform: uppercase;
+color: #fff;
 }
 
-/* Сетка карточек — 2 в ряд на всех устройствах */
+/* Сетка карточек — 2 в ряд, по центру */
 .menu-items {
 display: grid;
-grid-template-columns: repeat(2, 1fr); /* 2 карточки в ряд */
+grid-template-columns: repeat(2, 1fr);
 gap: 20px;
-justify-items: center;
+justify-content: center;
 width: 100%;
 }
 
@@ -115,7 +121,7 @@ box-shadow: 0 20px 40px rgba(2,8,6,0.45);
 }
 .menu-item img {
 width: 100%;
-height: 180px;
+aspect-ratio: 4/3;
 object-fit: cover;
 border-radius: 12px 12px 0 0;
 }
@@ -129,33 +135,22 @@ text-align: left;
 .info h3 {
 margin: 0;
 font-size: 18px;
-letter-spacing: 1px;
+letter-spacing: 4px;
+text-transform: uppercase;
 color: #fff;
 }
 .info p {
 margin: 0;
 font-size: 13px;
-letter-spacing: 0.5px;
+letter-spacing: 4px;
+text-transform: uppercase;
 color: rgba(255,255,255,0.85);
 line-height: 1.4;
 }
-.price-row {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-top: 8px;
-}
-.price {
-font-size: 16px;
-letter-spacing: 1px;
-color: #C8A951;
-font-weight: 600;
-}
 
-/* На мобильных сохраняем 2 карточки в ряд */
+/* Мобильные */
 max-width: 480px {
-.menu-item img { height: 140px; }
-.restaurant-name { font-size: 28px; }
+.restaurant-name { font-size: 28px; letter-spacing: 18px; }
 .section-title { font-size: 20px; }
 .info h3 { font-size: 16px; }
 .info p { font-size: 12px; }
@@ -175,14 +170,13 @@ max-width: 480px {
 
 <!— Секция: Салаты —>
 <section class="section">
-<div class="section-title">САЛАТЫ</div>
+<div class="section-title">🥗 Салаты</div>
 <div class="menu-items">
 <article class="menu-item" data-name="греческий салат" data-desc="помидоры огурцы маслины сыр фета оливковое масло">
 <img src="" alt="">
 <div class="info">
 <h3>Греческий салат</h3>
 <p>Помидоры, огурцы, маслины, сыр фета, оливковое масло</p>
-<div class="price-row"><div></div><div class="price">350 ₽</div></div>
 </div>
 </article>
 <article class="menu-item" data-name="цезарь" data-desc="курица салат романо пармезан соус сухарики">
@@ -190,7 +184,6 @@ max-width: 480px {
 <div class="info">
 <h3>Цезарь</h3>
 <p>Курица, салат романо, пармезан, соус цезарь, сухарики</p>
-<div class="price-row"><div></div><div class="price">420 ₽</div></div>
 </div>
 </article>
 </div>
@@ -198,14 +191,13 @@ max-width: 480px {
 
 <!— Секция: Супы —>
 <section class="section">
-<div class="section-title">СУПЫ</div>
+<div class="section-title">🥣 Супы</div>
 <div class="menu-items">
 <article class="menu-item" data-name="борщ" data-desc="свекла капуста мясо сметана">
 <img src="" alt="">
 <div class="info">
 <h3>Борщ</h3>
 <p>Свекла, капуста, мясо, сметана</p>
-<div class="price-row"><div></div><div class="price">250 ₽</div></div>
 </div>
 </article>
 <article class="menu-item" data-name="суп-пюре грибной" data-desc="шампиньоны сливки зелень">
@@ -213,7 +205,6 @@ max-width: 480px {
 <div class="info">
 <h3>Суп-пюре грибной</h3>
 <p>Шампиньоны, сливки, зелень</p>
-<div class="price-row"><div></div><div class="price">300 ₽</div></div>
 </div>
 </article>
 </div>
@@ -267,7 +258,6 @@ document.addEventListener('DOMContentLoaded', () => {
 document.querySelectorAll('.menu-item').forEach(item => {
 const name = item.getAttribute('data-name');
 if (name) {
-// Формируем имя файла: пробелы → _, маленькие буквы, .jpg
 const fileName = name.toLowerCase().replace(/\s+/g, '_') + '.jpg';
 const img = item.querySelector('img');
 if (img) {
@@ -278,5 +268,3 @@ img.alt = name;
 });
 });
 </script>
-</body>
-</html>
