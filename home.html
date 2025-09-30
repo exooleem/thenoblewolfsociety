@@ -14,13 +14,13 @@ html, body { height: 100%; margin: 0; padding: 0; }
 html, body {
 background-color: #0A5F38;
 color: #fff;
-font-family: "Playfair Display", serif;
+font-family: "Roboto", "Helvetica", Arial, sans-serif;
 }
 
 /* Контейнер */
 .container {
 width: 100%;
-max-width: 1000px;
+max-width: 900px;
 margin: 0 auto;
 padding: 20px 16px;
 }
@@ -38,6 +38,7 @@ opacity: 0.9;
 margin-bottom: 6px;
 }
 .restaurant-name {
+font-family: "Playfair Display", serif;
 font-size: 38px;
 line-height: 1;
 letter-spacing: 7px;
@@ -81,27 +82,26 @@ display: none;
 /* Секции */
 .section { padding: 26px 0; text-align: center; }
 .section-title {
-font-size: 24px;
+font-family: "Playfair Display", serif;
+font-size: 28px;
 margin-bottom: 18px;
 font-weight: 600;
-letter-spacing: 4px;
-text-transform: uppercase;
-color: #fff;
+letter-spacing: 2px;
 }
 
-/* Сетка карточек — 2 в ряд, по центру */
+/* Сетка карточек — 2 в ряд на всех экранах */
 .menu-items {
 display: grid;
 grid-template-columns: repeat(2, 1fr);
 gap: 20px;
-justify-content: center;
+justify-items: center;
 width: 100%;
 }
 
 /* Карточка блюда */
 .menu-item {
 width: 100%;
-max-width: 300px;
+max-width: 400px;
 background: rgba(255,255,255,0.03);
 border: 1px solid rgba(200,169,81,0.12);
 border-radius: 16px;
@@ -117,7 +117,7 @@ box-shadow: 0 20px 40px rgba(2,8,6,0.45);
 }
 .menu-item img {
 width: 100%;
-aspect-ratio: 4/3;
+height: 180px;
 object-fit: cover;
 border-radius: 12px 12px 0 0;
 }
@@ -130,24 +130,26 @@ text-align: left;
 }
 .info h3 {
 margin: 0;
-font-size: 14px; /* уменьшено */
+font-family: "Playfair Display", serif;
+font-size: 14px; /* компактно */
 letter-spacing: 4px;
 text-transform: uppercase;
 color: #fff;
 }
 .info p {
 margin: 0;
-font-size: 11px; /* уменьшено */
+font-size: 11px; /* компактно */
 letter-spacing: 4px;
 text-transform: uppercase;
 color: rgba(255,255,255,0.85);
 line-height: 1.4;
 }
 
-/* На мобильных сохраняем 2 карточки в ряд */
+/* Мобильная адаптивность */
 max-width: 480px {
 .restaurant-name { font-size: 28px; }
-.section-title { font-size: 20px; }
+.section-title { font-size: 22px; }
+.menu-item img { height: 140px; }
 .info h3 { font-size: 12px; }
 .info p { font-size: 10px; }
 }
@@ -166,7 +168,7 @@ max-width: 480px {
 
 <!— Секция: Салаты —>
 <section class="section">
-<div class="section-title">САЛАТЫ</div>
+<div class="section-title">🥗 Салаты</div>
 <div class="menu-items">
 <article class="menu-item" data-name="греческий салат" data-desc="помидоры огурцы маслины сыр фета оливковое масло">
 <img src="" alt="">
@@ -178,7 +180,7 @@ max-width: 480px {
 <article class="menu-item" data-name="цезарь" data-desc="курица салат романо пармезан соус сухарики">
 <img src="" alt="">
 <div class="info">
-<h3>Цезарь</h3>
+<h3>Цезарь с курицей</h3>
 <p>Курица, салат романо, пармезан, соус цезарь, сухарики</p>
 </div>
 </article>
@@ -187,7 +189,7 @@ max-width: 480px {
 
 <!— Секция: Супы —>
 <section class="section">
-<div class="section-title">СУПЫ</div>
+<div class="section-title">🥣 Супы</div>
 <div class="menu-items">
 <article class="menu-item" data-name="борщ" data-desc="свекла капуста мясо сметана">
 <img src="" alt="">
@@ -254,6 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.querySelectorAll('.menu-item').forEach(item => {
 const name = item.getAttribute('data-name');
 if (name) {
+// Название блюда -> имя файла: пробелы -> _, строчные буквы
 const fileName = name.toLowerCase().replace(/\s+/g, '_') + '.jpg';
 const img = item.querySelector('img');
 if (img) {
@@ -264,3 +267,5 @@ img.alt = name;
 });
 });
 </script>
+</body>
+</html>
