@@ -37,16 +37,12 @@ letter-spacing: 4px;
 opacity: 0.9;
 margin-bottom: 6px;
 }
-/* Растянутая надпись ХУРМА */
 .restaurant-name {
 font-size: 38px;
 line-height: 1;
+letter-spacing: 7px;
+margin-bottom: 16px;
 color: #C8A951;
-text-align: center;
-width: 100%;
-display: block;
-letter-spacing: 28px; /* подбираем растяжку */
-text-transform: uppercase;
 }
 
 /* Поиск с крестиком */
@@ -85,11 +81,11 @@ display: none;
 /* Секции */
 .section { padding: 26px 0; text-align: center; }
 .section-title {
-font-size: 24px;
+font-size: 24px; /* размер оставляем */
 margin-bottom: 18px;
 font-weight: 600;
-letter-spacing: 4px;
-text-transform: uppercase;
+letter-spacing: 4px; /* как у «Ресторан» */
+text-transform: uppercase; /* заглавные */
 color: #fff;
 }
 
@@ -98,7 +94,7 @@ color: #fff;
 display: grid;
 grid-template-columns: repeat(2, 1fr);
 gap: 20px;
-justify-content: center;
+justify-content: center; /* центровка рядов */
 width: 100%;
 }
 
@@ -121,7 +117,7 @@ box-shadow: 0 20px 40px rgba(2,8,6,0.45);
 }
 .menu-item img {
 width: 100%;
-aspect-ratio: 4/3;
+aspect-ratio: 4/3; /* адаптивная высота по ширине */
 object-fit: cover;
 border-radius: 12px 12px 0 0;
 }
@@ -134,23 +130,23 @@ text-align: left;
 }
 .info h3 {
 margin: 0;
-font-size: 18px;
-letter-spacing: 4px;
-text-transform: uppercase;
+font-size: 18px; /* размер оставляем */
+letter-spacing: 4px; /* как у «Ресторан» */
+text-transform: uppercase; /* заглавные */
 color: #fff;
 }
 .info p {
 margin: 0;
-font-size: 13px;
-letter-spacing: 4px;
-text-transform: uppercase;
+font-size: 13px; /* размер оставляем */
+letter-spacing: 4px; /* как у «Ресторан» */
+text-transform: uppercase; /* заглавные */
 color: rgba(255,255,255,0.85);
 line-height: 1.4;
 }
 
-/* Мобильные */
+/* На мобильных сохраняем 2 карточки в ряд */
 max-width: 480px {
-.restaurant-name { font-size: 28px; letter-spacing: 18px; }
+.restaurant-name { font-size: 28px; }
 .section-title { font-size: 20px; }
 .info h3 { font-size: 16px; }
 .info p { font-size: 12px; }
@@ -170,7 +166,7 @@ max-width: 480px {
 
 <!— Секция: Салаты —>
 <section class="section">
-<div class="section-title">🥗 Салаты</div>
+<div class="section-title">САЛАТЫ</div>
 <div class="menu-items">
 <article class="menu-item" data-name="греческий салат" data-desc="помидоры огурцы маслины сыр фета оливковое масло">
 <img src="" alt="">
@@ -191,7 +187,7 @@ max-width: 480px {
 
 <!— Секция: Супы —>
 <section class="section">
-<div class="section-title">🥣 Супы</div>
+<div class="section-title">СУПЫ</div>
 <div class="menu-items">
 <article class="menu-item" data-name="борщ" data-desc="свекла капуста мясо сметана">
 <img src="" alt="">
