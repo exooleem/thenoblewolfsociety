@@ -34,13 +34,13 @@ letter-spacing: 4px;
 opacity: 0.9;
 margin-bottom: 6px;
 }
-.restaurant-name {
-font-family: "Playfair Display", serif;
-font-size: 100px;
-line-height: 1;
-letter-spacing: 7px;
-margin-bottom: 16px;
-color: #C8A951;
+
+/* ЛОГОТИП */
+.restaurant-logo img {
+max-width: 280px;
+height: auto;
+display: block;
+margin: 0 auto 16px;
 }
 
 .search-container {
@@ -135,8 +135,9 @@ color: rgba(255,255,255,0.85);
 line-height: 1.2;
 }
 
+/* АДАПТИВ */
 max-width: 480px {
-.restaurant-name { font-size: 28px; }
+.restaurant-logo img { max-width: 180px; }
 .section-title { font-size: 18px; }
 .menu-item img { height: 140px; }
 .info h3 { font-size: 12px; letter-spacing: 1px; }
@@ -148,7 +149,9 @@ max-width: 480px {
 <div class="container">
 <header>
 <div class="top-text">Ресторан</div>
-<div class="restaurant-name">ХУРМА</div>
+<div class="restaurant-logo">
+<img src="лого.png" alt="Ресторан Хурма">
+</div>
 <div class="search-container">
 <input id="search" class="search-bar" type="text" placeholder="Поиск блюда..." aria-label="Поиск блюда">
 <button id="clear-btn" title="Очистить">✖</button>
