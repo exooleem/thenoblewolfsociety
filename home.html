@@ -24,8 +24,48 @@ body::before {
 
 /* Основной стиль сайта */
 body {
-    color: #fff;
+    color: #000; /* Цвет текста */
+    font-family: "Roboto", "Helvetica", Arial, sans-serif; /* Основной шрифт */
+    font-size: 16px; /* Размер текста по умолчанию */
+    line-height: 1.5; /* Межстрочный интервал */
+    background-color: #fff; /* Фоновый цвет сайта */
+    margin: 0;
+    padding: 0;
+}
+
+/* Все заголовки и параграфы на сайте */
+h1, h2, h3, h4, h5, h6, p, div, span, article, section, li {
     font-family: "Roboto", "Helvetica", Arial, sans-serif;
+    color: #000; /* Можно поменять на #333 для более мягкого черного */
+}
+
+/* Стиль для меню */
+.menu-item h3 {
+    font-family: "Roboto", "Helvetica", Arial, sans-serif;
+    color: #000;
+    font-size: 18px; /* Размер названия блюда */
+    margin: 0 0 5px 0;
+}
+
+.menu-item p {
+    font-family: "Roboto", "Helvetica", Arial, sans-serif;
+    color: #000;
+    font-size: 14px; /* Размер описания блюда */
+    margin: 0;
+}
+
+/* Секции меню */
+.section-title {
+    font-family: "Roboto", "Helvetica", Arial, sans-serif;
+    color: #000;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Дополнительно для ссылок и кнопок */
+a, button {
+    font-family: "Roboto", "Helvetica", Arial, sans-serif;
+    color: #000;
 }
 .container {
 width: 100%;
