@@ -12,11 +12,37 @@ html, body { height: 100%; margin: 0; padding: 0; }
 body {
 background: url("фон.jpg") no-repeat center center fixed;
 background-size: cover;
-background-position: center top;
 color: #fff;
 font-family: "Roboto", "Helvetica", Arial, sans-serif;
 }
+/* Медиазапрос для мобильных экранов */
+max-width: 480px {
+    body {
+        background: url("фон_mobile.jpg") no-repeat center top fixed; /* другой фон для мобильного */
+        background-size: cover;
+    }
 
+    .restaurant-logo img {
+        max-width: 280px; /* немного меньше логотип */
+        margin: 20px auto 16px; /* можно сместить вниз */
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .menu-item img {
+        height: 140px;
+    }
+
+    .info h3 {
+        font-size: 12px;
+    }
+
+    .info p {
+        font-size: 7px;
+    }
+}
 .container {
 width: 100%;
 max-width: 900px;
