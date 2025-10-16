@@ -9,11 +9,25 @@
 *, *::before, *::after { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; padding: 0; }
 
-body {
-    background: url("фон.jpg") no-repeat center center fixed;
+/* Фиксированный фон */
+body::before {
+    content: "";
+    position: fixed;       /* прикрепляем к экрану */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("фон.jpg") no-repeat center center;
     background-size: cover;
-    color: #fff;
+    z-index: -1;           /* фон позади всего контента */
+}
+
+/* Контент на сайте */
+body {
+    margin: 0;
+    padding: 0;
     font-family: "Roboto", "Helvetica", Arial, sans-serif;
+    color: #fff;
 }
 .container {
 width: 100%;
