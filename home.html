@@ -10,26 +10,10 @@
 html, body { height: 100%; margin: 0; padding: 0; }
 
 body {
-background: url("фон-desktop.jpg") no-repeat center center fixed;
+background: url("фон.jpg") no-repeat center center fixed;
 background-size: cover;
 color: #fff;
 font-family: "Roboto", "Helvetica", Arial, sans-serif;
-}
-
-/* Планшеты */
-max-width: 1024px {
-body {
-background: url("фон-tablet.jpg") no-repeat center center fixed;
-background-size: cover;
-}
-}
-
-/* Мобильные */
-max-width: 480px {
-body {
-background: url("фон-mobile.jpg") no-repeat center center fixed;
-background-size: cover;
-}
 }
 
 .container {
@@ -63,7 +47,7 @@ margin: 0 auto 16px;
 .search-container {
 width: 100%;
 max-width: 480px;
-margin: 0 auto 8px;
+margin: 0 auto 16px;
 position: relative;
 }
 .search-bar {
@@ -92,12 +76,13 @@ display: none;
 }
 
 .contact-info {
-text-align:center;
+text-align: center;
 margin-bottom: 32px;
 font-size: 14px;
 opacity: 0.9;
 }
 
+/* Секции */
 .section { padding: 26px 0; text-align: center; }
 .section-title {
 font-family: "Playfair Display", serif;
@@ -157,6 +142,26 @@ font-size: 8px;
 letter-spacing: 1px;
 color: rgba(255,255,255,0.85);
 line-height: 1.2;
+}
+
+/* Кнопка "Наверх" */
+#toTopBtn {
+display: none;
+position: fixed;
+bottom: 40px;
+right: 30px;
+z-index: 99;
+font-size: 24px;
+background-color: rgba(0,0,0,0.6);
+color: #fff;
+border: none;
+border-radius: 50%;
+padding: 12px 16px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+#toTopBtn:hover {
+background-color: rgba(200,169,81,0.8);
 }
 
 /* АДАПТИВ */
@@ -307,8 +312,176 @@ max-width: 480px {
 <div class="info">
 <h3>Фруктовая нарезка «Средняя»</h3>
 <p>Ананас, груша, апельсин, виноград, банан, киви</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="овощная нарезка большая" data-desc="Огурец, помидор, болгарский перец, лук, зелень, оливки">
+<img src="" alt="">
+<div class="info">
+<h3>Овощная нарезка «Большая»</h3>
+<p>Огурец, помидор, болгарский перец, лук, зелень, оливки</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="овощная нарезка средняя" data-desc="Огурец, помидор, болгарский перец, лук, зелень, оливки">
+<img src="" alt="">
+<div class="info">
+<h3>Овощная нарезка «Средняя»</h3>
+<p>Огурец, помидор, болгарский перец, лук, зелень, оливки</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат буратто" data-desc="Сыр буратто, розовый помидор, микс салат, песто, бальзамический соус">
+<img src="" alt="">
+<div class="info">
+<h3>Салат «Буратто»</h3>
+<p>Сыр буратто, розовый помидор, микс салат, песто, бальзамический соус</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат капрезе" data-desc="Сыр капрезе, розовый помидор, микс салат, песто, бальзамический соус">
+<img src="" alt="">
+<div class="info">
+<h3>Салат «Капрезе»</h3>
+<p>Сыр капрезе, розовый помидор, микс салат, песто, бальзамический соус</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="сырное ассорти" data-desc="Разновидности сыра">
+<img src="" alt="">
+<div class="info">
+<h3>Сырное ассорти</h3>
+<p>Разновидности сыра</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="фирменный салат хурма" data-desc="Микс салат, говядина, черри, баклажан, хурма, яйцо">
+<img src="" alt="">
+<div class="info">
+<h3>Фирменный салат «Хурма»</h3>
+<p>Микс салат, говядина, черри, баклажан, хурма, яйцо</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат теплый" data-desc="Грибы, курица, болгарский перец, лук, пармезан">
+<img src="" alt="">
+<div class="info">
+<h3>Салат «Теплый»</h3>
+<p>Грибы, курица, болгарский перец, лук, пармезан</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат с баклажаном" data-desc="Хрустящий баклажан, черри, кинза, зелень, соус унаги">
+<img src="" alt="">
+<div class="info">
+<h3>Салат с баклажаном</h3>
+<p>Хрустящий баклажан, черри, кинза, зелень, соус унаги</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат тифлис" data-desc="Говядина, фасоль, болгарский перец, лук, грецкий орех, кинза">
+<img src="" alt="">
+<div class="info">
+<h3>Салат «Тифлис»</h3>
+<p>Говядина, фасоль, болгарский перец, лук, грецкий орех, кинза</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат свекла с черносливом" data-desc="Свекла, чернослив, грецкий орех">
+<img src="" alt="">
+<div class="info">
+<h3>Салат «Свекла с черносливом»</h3>
+<p>Свекла, чернослив, грецкий орех</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат ряба" data-desc="Майонез, чеснок, огурец, кукуруза, куриная грудка, фасоль, сухари">
+<img src="" alt="">
+<div class="info">
+<h3>Салат «Ряба»</h3>
+<p>Майонез, чеснок, огурец, кукуруза, куриная грудка, фасоль, сухари</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат алина" data-desc="Фасоль, рис, кукуруза, яйцо, лук, огурец, майонез">
+<img src="" alt="">
+<div class="info">
+<h3>Салат «Алина»</h3>
+<p>Фасоль, рис, кукуруза, яйцо, лук, огурец, майонез</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат солла" data-desc="Помидор, лук, перепелиное яйцо, микс зелени">
+<img src="" alt="">
+<div class="info">
+<h3>Салат «Солла»</h3>
+<p>Помидор, лук, перепелиное яйцо, микс зелени</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат эдита" data-desc="Манго, авокадо, креветки, черри, руккола">
+<img src="" alt="">
+<div class="info">
+<h3>Салат «Эдита»</h3>
+<p>Манго, авокадо, креветки, черри, руккола</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат хеда" data-desc="Гранат, пекинка, ананас, грецкий орех, пармезан, майонез">
+<img src="" alt="">
+<div class="info">
+<h3>Салат «Хеда»</h3>
+<p>Гранат, пекинка, ананас, грецкий орех, пармезан, майонез</p>
+</div>
+</article>
+
+<article class="menu-item" data-name="салат гроза" data-desc="Говядина, фасоль, шампиньоны, корнишоны, опята, шпинат, кинза, лук зеленый, заправка">
+<img src="" alt="">
+<div class="info">
+<h3>Салат «Гроза»</h3>
+<p>Говядина, фасоль, шампиньоны, корнишоны, опята, шпинат, кинза, лук зеленый, заправка</p>
+</div>
+</article>
 
 </div>
+</section>
+
+<!— 2. СУПЫ —>
+<section class="section">
+<div class="section-title">СУПЫ</div>
+<div class="menu-items">
+<!— Заполнить блюда супов позже —>
+</div>
+</section>
+
+<!— 3. СПАГЕТТИ —>
+<section class="section">
+<div class="section-title">СПАГЕТТИ</div>
+<div class="menu-items">
+<!— Заполнить блюда спагетти позже —>
+</div>
+</section>
+
+<!— 4. ВТОРЫЕ БЛЮДА —>
+<section class="section">
+<div class="section-title">ВТОРЫЕ БЛЮДА</div>
+<div class="menu-items">
+<!— Заполнить блюда вторых блюд позже —>
+</div>
+</section>
+
+<!— 5. МАНГАЛ —>
+<section class="section">
+<div class="section-title">МАНГАЛ</div>
+<div class="menu-items">
+<!— Заполнить блюда мангала позже —>
+</div>
+</section>
+
+</div>
+
+<!— Кнопка "Наверх" —>
+<button id="toTopBtn" title="Наверх">↑</button>
 
 <script>
 const searchInput = document.getElementById('search');
@@ -355,7 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.querySelectorAll('.menu-item').forEach(item => {
 const name = item.getAttribute('data-name');
 if (name) {
-const fileName = 'menu/' + name.toLowerCase().replace(/\s+/g, '_') + '.jpg';
+const fileName = "menu/" + name.toLowerCase().replace(/\s+/g, '_') + '.jpg';
 const img = item.querySelector('img');
 if (img) {
 img.src = fileName;
@@ -363,6 +536,19 @@ img.alt = name;
 }
 }
 });
+});
+
+// Кнопка "Наверх"
+const toTopBtn = document.getElementById("toTopBtn");
+window.onscroll = function() {
+if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+toTopBtn.style.display = "block";
+} else {
+toTopBtn.style.display = "none";
+}
+};
+toTopBtn.addEventListener("click", () => {
+window.scrollTo({ top: 0, behavior: "smooth" });
 });
 </script>
 </body>
