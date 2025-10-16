@@ -9,27 +9,26 @@
 *, *::before, *::after { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; padding: 0; }
 
-/* Фиксированный фон */
+body {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-family: "Roboto", "Helvetica", Arial, sans-serif;
+    position: relative; /* чтобы ::before был корректно позиционирован */
+}
+
+/* Статичный фон через псевдоэлемент */
 body::before {
     content: "";
-    position: fixed;       /* прикрепляем к экрану */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: url("фон.jpg") no-repeat center center;
+    background: url("фон.jpg") center center no-repeat;
     background-size: cover;
-    z-index: -1;           /* фон позади всего контента */
+    z-index: -1; /* фон позади всего контента */
 }
-
-/* Контент на сайте */
-body {
-    background: url("фон.jpg") no-repeat center center fixed; /* Фон фиксирован на ПК */
-    background-size: cover;
-    color: #fff;
-    font-family: "Roboto", "Helvetica", Arial, sans-serif;
-}
-
 /* Медиазапрос для мобильных экранов */
 max-width: 480px {
     body {
