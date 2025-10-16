@@ -24,10 +24,29 @@ body::before {
 
 /* Контент на сайте */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", "Helvetica", Arial, sans-serif;
+    background: url("фон.jpg") no-repeat center center fixed; /* Фон фиксирован на ПК */
+    background-size: cover;
     color: #fff;
+    font-family: "Roboto", "Helvetica", Arial, sans-serif;
+}
+
+/* Медиазапрос для мобильных экранов */
+max-width: 480px {
+    body {
+        background-attachment: scroll; /* Фон перестает быть фиксированным на мобиле */
+        background-size: cover;         /* Фон масштабируется под экран */
+        background-position: center center; /* Центрируем фон */
+    }
+
+    .restaurant-logo img {
+        max-width: 180px; /* уменьшаем логотип */
+        margin: 20px auto 16px; /* чуть смещаем вниз */
+    }
+
+    .section-title { font-size: 18px; }
+    .menu-item img { height: 140px; }
+    .info h3 { font-size: 12px; }
+    .info p { font-size: 7px; }
 }
 .container {
 width: 100%;
