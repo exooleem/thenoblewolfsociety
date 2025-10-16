@@ -9,15 +9,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; padding: 0; }
 
-body {
-    margin: 0;
-    padding: 0;
-    color: #fff;
-    font-family: "Roboto", "Helvetica", Arial, sans-serif;
-    position: relative; /* чтобы ::before был корректно позиционирован */
-}
-
-/* Статичный фон через псевдоэлемент */
+/* Фиксированный фон через псевдоэлемент */
 body::before {
     content: "";
     position: fixed;
@@ -27,7 +19,13 @@ body::before {
     height: 100%;
     background: url("фон.jpg") center center no-repeat;
     background-size: cover;
-    z-index: -1; /* фон позади всего контента */
+    z-index: -1;
+}
+
+/* Основной стиль сайта */
+body {
+    color: #fff;
+    font-family: "Roboto", "Helvetica", Arial, sans-serif;
 }
 /* Медиазапрос для мобильных экранов */
 max-width: 480px {
