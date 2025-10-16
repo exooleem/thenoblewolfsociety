@@ -44,6 +44,15 @@ display: block;
 margin: 0 auto 16px;
 }
 
+/* Контактная информация */
+.contact-info {
+text-align: center;
+font-size: 14px;
+opacity: 0.9;
+margin-bottom: 32px;
+}
+
+/* Поиск */
 .search-container {
 width: 100%;
 max-width: 480px;
@@ -75,6 +84,7 @@ cursor: pointer;
 display: none;
 }
 
+/* Секции */
 .section { padding: 26px 0; text-align: center; }
 .section-title {
 font-family: "Playfair Display", serif;
@@ -84,6 +94,7 @@ font-weight: 600;
 letter-spacing: 1.5px;
 }
 
+/* Меню */
 .menu-items {
 display: grid;
 grid-template-columns: repeat(2, 1fr);
@@ -91,7 +102,6 @@ gap: 20px;
 justify-items: center;
 width: 100%;
 }
-
 .menu-item {
 width: 100%;
 max-width: 400px;
@@ -136,7 +146,7 @@ color: rgba(255,255,255,0.85);
 line-height: 1.2;
 }
 
-/* АДАПТИВ */
+/* Адаптив */
 max-width: 480px {
 .restaurant-logo img { max-width: 180px; }
 .section-title { font-size: 18px; }
@@ -157,8 +167,8 @@ max-width: 480px {
 <input id="search" class="search-bar" type="text" placeholder="Поиск блюда..." aria-label="Поиск блюда">
 <button id="clear-btn" title="Очистить">✖</button>
 </div>
-<div class="contact-info" style="text-align:center; margin-bottom: 32px; font-size: 14px; opacity: 0.9;">
-  Ул. Мохаммеда Али 2/5, Тел: +7 (928) 943-76-76
+<div class="contact-info">
+Ул. Мохаммеда Али 2/5, Тел: +7 (928) 943-76-76
 </div>
 </header>
 
@@ -497,7 +507,8 @@ document.addEventListener('DOMContentLoaded', () => {
 document.querySelectorAll('.menu-item').forEach(item => {
 const name = item.getAttribute('data-name');
 if (name) {
-const fileName = name.toLowerCase().replace(/\s+/g, '_') + '.jpg';
+// Берем фото из папки "menu"
+const fileName = 'menu/' + name.toLowerCase().replace(/\s+/g, '_') + '.jpg';
 const img = item.querySelector('img');
 if (img) {
 img.src = fileName;
